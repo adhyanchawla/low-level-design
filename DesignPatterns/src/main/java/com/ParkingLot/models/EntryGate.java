@@ -49,7 +49,9 @@ public class EntryGate extends Gate {
                         availableFourWheelerSlots++;
                     }
                 } else if (slot instanceof MassiveFourWheelerSlot) {
-                    availableMassiveFourWheelerSlots++;
+                    if (slot.isFree()) {
+                        availableMassiveFourWheelerSlots++;
+                    }
                 }
             }
             System.out.println(" Floor Number " + floor.floorNo + " TwoWheelerSlots Available " +

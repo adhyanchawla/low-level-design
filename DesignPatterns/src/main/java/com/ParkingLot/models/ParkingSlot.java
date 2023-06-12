@@ -3,15 +3,15 @@ package main.java.com.ParkingLot.models;
 import java.util.List;
 
 
-public abstract class ParkingSlot {
+public class ParkingSlot {
     int parkingSlotId;
-    int floorNo;
+    Integer floorNo;
 
-    public int getFloorNo() {
+    public Integer getFloorNo() {
         return floorNo;
     }
 
-    public void setFloorNo(int floorNo) {
+    public void setFloorNo(Integer floorNo) {
         this.floorNo = floorNo;
     }
     Vehicle vehicle;
@@ -23,7 +23,6 @@ public abstract class ParkingSlot {
     public ParkingSlot(int floorNo, int parkingSlotId) {
         this.floorNo = floorNo;
         this.parkingSlotId = parkingSlotId;
-        this.vehicle = null;
     }
 
 
@@ -41,10 +40,6 @@ public abstract class ParkingSlot {
     }
 
     public void setFree(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 }

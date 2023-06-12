@@ -33,6 +33,7 @@ public class RandomParkingStrategy implements ParkingStrategy {
                         }
                         break;
                     case "SCOOTER":
+                        System.out.println("we are here " + vehicleType);
                         if (slot instanceof TwoWheelerSlot) {
                             if (slot.isFree()) {
                                 availableSlots.add(slot);
@@ -54,7 +55,7 @@ public class RandomParkingStrategy implements ParkingStrategy {
                 slotAssigned = availableSlots.get(slot);
                 System.out.println("Slot Type " + slotAssigned);
                 slotAssigned.setFloorNo(floor);
-                floors.get(floor).getParkingSlots().get(slot).setFree(vehicle);
+                slotAssigned.setFree(vehicle);
                 break;
             } else count++;
         }

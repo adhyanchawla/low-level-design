@@ -21,20 +21,15 @@ public class ParkingLotApplication {
     }
 
     public void displayParkingLotStatus() {
-        this.entryGates.get(0).displayAvailableSlots(floors);
+        EntryGate.displayAvailableSlots(floors);
     }
 
     public ParkingSlot removeVehicleFromSpace(int gateId, Ticket ticket, List<ParkingFloor> floors) {
-        if(!this.exitGates.get(gateId).isGateStatus()) {
             ParkingSlot slot = this.exitGates.get(gateId).removeVehicleFromSpace(ticket, floors);
             this.exitGates.get(gateId).setGateStatus(true);
             double bill = this.exitGates.get(gateId).calculateBill(ticket);
             this.exitGates.get(gateId).displayBill();
             return slot;
-        } else {
-            System.out.println("Please wait! The gate is currently engaged with another vehicle");
-            return null;
-        }
     }
 
     public double calculateBill(int gateId, Ticket ticket) {

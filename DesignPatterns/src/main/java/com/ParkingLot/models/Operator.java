@@ -76,12 +76,16 @@ public class Operator {
     }
     public ParkingSlot removeVehicle(Ticket ticket, List<ParkingFloor> floors) {
         System.out.println("Inside removeVehicle of Operator");
-        this.ticket = ticket;
-        if(this.ticket != null) {
-            ParkingSlot assignedSlot = this.ticket.getSlot();
+//        this.ticket = ticket;
+        if(ticket != null) {
+            ParkingSlot assignedSlot = ticket.getSlot();
 //            assignedSlot.setFree(null);
-            System.out.println(" Position of floors " + floors.get(assignedSlot.floorNo).getParkingSlots().get(assignedSlot.parkingSlotId).isFree());
-            floors.get(assignedSlot.floorNo).getParkingSlots().get(assignedSlot.parkingSlotId).setFree(null);
+            assignedSlot.setFloorNo(null);
+            assignedSlot.setFree(null);
+            System.out.println("Spot is free? " + assignedSlot.isFree());
+//            System.out.println("Floors are " + floors.get(assignedSlot.floorNo).getParkingSlots().get(assignedSlot.getParkingSlotId()).vehicle.getVehicleType());
+//            System.out.println(" Position of floors " + floors.get(assignedSlot.floorNo).getParkingSlots().get(assignedSlot.parkingSlotId).isFree());
+//            floors.get(assignedSlot.floorNo).getParkingSlots().get(assignedSlot.parkingSlotId).setFree(null);
             System.out.println("Is assigned slot in removeVehicle operator class " + (assignedSlot == null));
             System.out.println(" Assigned Slot " + assignedSlot.parkingSlotId + " " + assignedSlot.getFloorNo());
             return assignedSlot;
