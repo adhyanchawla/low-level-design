@@ -7,7 +7,6 @@ import com.example.BookMyShow.repositories.PaymentRepo;
 import com.example.BookMyShow.repositories.ShowSeatRepo;
 import com.example.BookMyShow.repositories.TicketRepo;
 import com.example.BookMyShow.services.PaymentService;
-import com.example.BookMyShow.services.TicketService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +41,7 @@ public class PaymentServiceImpl implements PaymentService {
                 ticket.setShowSeatsBooked(showSeats);
                 ticket.setTicketStatus(TicketStatus.UNCONFIRMED);
                 ticket.setShowSeatsBooked(new ArrayList<>());
+                ticket.setPayment(payment);
                 this.ticketRepo.save(ticket);
                 break;
             }
@@ -49,6 +49,7 @@ public class PaymentServiceImpl implements PaymentService {
                 if(payment.getPaymentRefId() == null)
                     payment.setPaymentRefId(UUID.randomUUID().toString());
                 this.ticketRepo.save(ticket);
+                ticket.setPayment(payment);
                 ticket.setTicketStatus(TicketStatus.BOOKED);
                 break;
             }
